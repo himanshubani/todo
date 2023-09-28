@@ -50,10 +50,11 @@ body{
 
 .list-name{
     cursor: pointer;
+    opacity: 0.6;
 }
 
 .list-name:hover{
-    opacity: 0.7;
+    opacity: 0.3;
 }
 
 form{
@@ -131,6 +132,7 @@ form{
 
 .active-list{
     font-weight: 700;
+    opacity: 1;
 }
 
 .todo-list{
