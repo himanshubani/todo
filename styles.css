@@ -82,6 +82,17 @@ form{
     opacity: 0.7;
 }
 
+
+.btn.delete{
+    opacity: 0.5; 
+    font-size: 1.2rem;
+    transition: color 200ms ease-in;
+}
+
+.btn.delete:hover{
+    color: var(--clr-warning);
+}
+
 .new{
     background: transparent;
     border: 0;
@@ -91,20 +102,32 @@ form{
     outline: none;
     transition: border-bottom 0.150ms ease-in;
     order: 2; 
+    padding: 0.25em;
 }
 
 .new.list{
     font-size: 1.2rem;
 }
 
+.new.task{
+    margin-bottom: 0;
+}
+
 .new:focus{
     border-bottom-width: 3px;
 }
 
-.new:focus::placeholder{
+.new::placeholder{
     opacity: 0.4;
     color: inherit;
 }
+
+.new:focus::placeholder{
+    opacity: 0.15;
+    color: inherit;
+}
+
+
 
 .active-list{
     font-weight: 700;
@@ -138,6 +161,11 @@ form{
 
 .todo-body{
     padding: var(--spacer);
+    position: relative;
+}
+
+.new-task-creator .create{
+    color: var(--clr-primary);
 }
 
 [type = "checkbox"]{
@@ -146,14 +174,14 @@ form{
 }
 
 label{
-    display: flex;
+    display: inline-flex;
     align-items: center;
     position: relative;
-    margin-bottom: 1.25rem;
 }
 
 .task{
     position: relative;
+    margin-bottom: 1.25rem;
 }
 
 
@@ -167,6 +195,7 @@ label{
     height: 1px;
     background: currentColor;
     opacity: 0.2;
+    margin-bottom: 0.6rem;
 }
 
 .custom-checkbox{
@@ -204,8 +233,27 @@ label{
 .task label::after{
     content: "";
     position: absolute;
-    left: 0;
+    left: 1.4em;
     right: 0;
     height: 3px;
     background: currentColor;
+    /* top: 50%; */
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 200ms ease-in-out;
+}
+
+[type = "checkbox"]:checked + label::after{
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.delete-stuff{
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: -35px;
+    color: var(--clr-light);
 }
